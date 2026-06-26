@@ -12,7 +12,13 @@ function main() {
         console.log("Usage: notes add <your note>");
         return;
       }
-      const note = store.add(text);
+      let note;
+      try {
+        note = store.add(text);
+      } catch (err) {
+        console.log(err.message);
+        return;
+      }
       console.log(`Added note #${note.id}: ${note.text}`);
       break;
     }
